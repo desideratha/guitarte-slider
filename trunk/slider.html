@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <!-- jQuery -->
+<!-- jQuery -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+ <!-- Anything Slider optional plugins -->
+ <script src="js/jquery.easing.1.2.js"></script>
+
+ <!-- Anything Slider -->
+ <link href="css/anythingslider.css" rel="stylesheet">
+ <script src="js/jquery.anythingslider.min.js"></script>
+
+ <!-- Anything Slider optional FX extension -->
+ <script src="js/jquery.anythingslider.fx.min.js"></script>
+ 
+ <script type="text/javascript">
+$(function(){
+ $('#slider3')
+  .anythingSlider()
+  .anythingSliderFx({
+   // '.selector' : [ 'caption', 'distance/size', 'time', 'easing' ]
+   // 'distance/size', 'time' and 'easing' are optional parameters
+   '.caption-top'    : [ 'caption-Top', '50px' ],
+   '.caption-right'  : [ 'caption-Right', '130px', '1000', 'easeOutBounce' ],
+   '.caption-bottom' : [ 'caption-Bottom', '50px' ],
+   '.caption-left'   : [ 'caption-Left', '130px', '1000', 'easeOutBounce' ]
+  })
+  /* add a close button (x) to the caption */
+  .find('div[class*=caption]')
+    .css({ position: 'absolute' })
+    .prepend('<span class="close">x</span>')
+    .find('.close').click(function(){
+      var cap = $(this).parent(),
+       ani = { bottom : -50 }; // bottom
+      if (cap.is('.caption-top')) { ani = { top: -50 }; }
+      if (cap.is('.caption-left')) { ani = { left: -150 }; }
+      if (cap.is('.caption-right')) { ani = { right: -150 }; }
+      cap.animate(ani, 400, function(){ cap.hide(); } );
+    });
+}); 
+
+</script>
+
+
+
+
+</head>
+
+<body id="simple">
+
+	<!-- Simple AnythingSlider -->
+
+	 <ul id="slider3">
+  <li>
+   <!-- Note this caption is before the image, all others it is after -->
+   <div class="caption-top">
+    In Soviet Russia, concrete pours you!
+   </div>
+   <img src="images/slide-civil-1.jpg" alt="">
+  </li>
+  <li>
+   <img src="images/slide-env-1.jpg" alt="">
+   <div class="caption-right">
+    How many supervisors are there? Wrong! 5, who is taking the picture?
+   </div>
+  </li>
+  <li>
+   <img src="images/slide-civil-2.jpg" alt="">
+   <div class="caption-bottom">
+    Alas, the pylon would never make it to the hydrant, her true love.
+   </div>
+  </li>
+  <li>
+   <img src="images/slide-env-2.jpg" alt="">
+   <div class="caption-left">
+    Take a left at the traffic circle.
+   </div>
+  </li>
+ </ul>
+
+</body>
+
+</html>
